@@ -1,0 +1,83 @@
+//
+//  ViewController.swift
+//  BMI_Louis_Pachas
+//
+//  Created by Louis Pachas on 3/17/19.
+//  Copyright © 2019 Louis Pachas. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    //control drag all storyboard
+    @IBOutlet weak var bmiLabel: UILabel!
+    
+    @IBOutlet weak var yourBMI: UITextField!
+    
+    @IBOutlet weak var yourWeight: UITextField!
+    
+    @IBOutlet weak var weightLabel: UILabel!
+    
+    @IBOutlet weak var yourHeight: UITextField!
+    
+    @IBOutlet weak var heightLabel: UILabel!
+    
+    @IBOutlet weak var yourCat: UILabel!
+    //action
+    @IBAction func clickCalculate(_ sender: UIButton) {
+        //input for each txt field
+        let weightTxtField = yourWeight.text!
+        
+        let heightTxtField = yourHeight.text!
+        
+        //convert to double
+        
+        let weightValue : Double = Double (weightTxtField)!
+        
+        let heightValue : Double = Double (heightTxtField)!
+        //2 decimal places
+        let formatStr = "%.2f"
+        //math portion
+        let bmiTotal : Double = weightValue / pow(heightValue,2)
+        //answer to bmi txt field
+        yourBMI.text = String(format: formatStr,bmiTotal)
+        //set up for if else statements
+        
+        let bmiWeight = bmiTotal
+        //start of if else, print (label.text = "string") or label.text = "string" Both would work
+        if bmiWeight<=15 {
+            print (yourCat.text = "Extremely Underweight")
+        }
+        else if bmiWeight<=16 {
+            print (yourCat.text = "Serverely Underweight")
+        }
+        else if bmiWeight<=18.5 {
+            print (yourCat.text = "Underweight")
+        }
+        else if bmiWeight<=25 {
+            print (yourCat.text = "Normal")
+        }
+        else if bmiWeight<=30 {
+            print (yourCat.text = "Overweight")
+        }
+        else if bmiWeight<=35 {
+            print (yourCat.text = "Moderately Obese")
+        }
+        else if bmiWeight<=40 {
+            print (yourCat.text = "Severely Obese")
+        }
+        else if bmiWeight>=60 {
+            print (yourCat.text = "Extremely Obese")
+        }
+    }
+    
+    
+    override func viewDidLoad() {
+        
+        
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+
+}
